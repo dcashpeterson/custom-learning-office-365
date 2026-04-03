@@ -12,6 +12,7 @@ import isEqual from "lodash-es/isEqual";
 import * as strings from 'M365LPStrings';
 import { ICategory, ILocale, IMetadataEntry, IMultilingualString, IPlaylist, ITechnology } from "../../../common/models/Models";
 import HOONotifyLabel from "@n8d/htwoo-react/HOONotifyLabel";
+import { params } from "../../../common/services/Parameters";
 
 export interface IPlaylistDetailProps {
   categories: ICategory[];
@@ -171,6 +172,15 @@ export default class PlaylistDetail extends React.Component<IPlaylistDetailProps
     return retVal;
   }
 
+  private getStatusTag(statusTagId: string): IMetadataEntry {
+      let retVal = params.statusTags[5];
+      const statusTag = params.statusTags.find(s => s.Id === statusTagId);
+      if (statusTag){
+        retVal = statusTag;
+      }      
+      return retVal;
+    }
+
   public render(): React.ReactElement<IPlaylistDetailProps> {
     const categoryError = this.getCategoryError();
     try {
@@ -286,6 +296,13 @@ export default class PlaylistDetail extends React.Component<IPlaylistDetailProps
               }
               <HOOLabel label={strings.DetailEditTechnology} />
               <p className="adm-fieldvalue">{(this.state.selectedTechnology) ? this.state.selectedTechnology.Name : ""}</p>
+
+              {this.props.detail.Source === "Microsoft" &&
+                <>
+                  <HOOLabel label={strings.DetailEditStatus} />
+                  <p className="adm-fieldvalue">{(this.props.detail.StatusTagId) ? this.getStatusTag(this.props.detail.StatusTagId).Name : ""}</p>
+                </>
+              }
 
 
               <HOOLabel label={strings.DetailEditCategory} />

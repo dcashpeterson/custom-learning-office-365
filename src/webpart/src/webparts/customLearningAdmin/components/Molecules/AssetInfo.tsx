@@ -252,7 +252,7 @@ export default class AssetInfo extends React.Component<IAssetInfoProps, IAssetIn
   }
 
   private getStatusTag(statusTagId: string): IMetadataEntry {
-    let retVal = params.statusTags[0];
+    let retVal = params.statusTags[5];
     const statusTag = params.statusTags.find(s => s.Id === statusTagId);
     if (statusTag){
       retVal = statusTag;
