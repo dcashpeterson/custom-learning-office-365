@@ -13,6 +13,8 @@ import * as strings from 'M365LPStrings';
 import { ICategory, ILocale, IMetadataEntry, IMultilingualString, IPlaylist, ITechnology } from "../../../common/models/Models";
 import HOONotifyLabel from "@n8d/htwoo-react/HOONotifyLabel";
 import { params } from "../../../common/services/Parameters";
+import HOOIcon from "@n8d/htwoo-react/HOOIcon";
+import styles from "../../../common/CustomLearningCommon.module.scss";
 
 export interface IPlaylistDetailProps {
   categories: ICategory[];
@@ -300,6 +302,10 @@ export default class PlaylistDetail extends React.Component<IPlaylistDetailProps
               {this.props.detail.Source === "Microsoft" &&
                 <>
                   <HOOLabel label={strings.DetailEditStatus} />
+                  <HOOIcon
+                    iconName={this.props.detail.StatusTagId === "c11c485b-496d-479b-88a3-1744a7a028d7" ? "icon-star-emphasis-regular" : "icon-circle-filled"}
+                    rootElementAttributes={{className : this.props.detail.StatusTagId === "4eb25076-b5d0-41cb-afa6-4e0c5a1c9664" ? styles.error : styles.info, "title" : this.props.detail.StatusTagId ? this.getStatusTag(this.props.detail.StatusTagId).Name : "" }}
+                  />
                   <p className="adm-fieldvalue">{(this.props.detail.StatusTagId) ? this.getStatusTag(this.props.detail.StatusTagId).Name : ""}</p>
                 </>
               }
