@@ -36,7 +36,7 @@ export default class AssetDetailsCommands extends React.PureComponent<IAssetDeta
         <div className="pl-edit-item">
           {this.props.assetStatus &&
             <HOOIcon
-              iconName="icon-circle-filled"
+              iconName={this.props.assetStatus.Id === "c11c485b-496d-479b-88a3-1744a7a028d7" ? "icon-star-emphasis-regular" : "icon-info-circle-filled"}
               rootElementAttributes={{className : this.props.assetStatus.Id === "4eb25076-b5d0-41cb-afa6-4e0c5a1c9664" ? styles.error : styles.info, "title" : this.props.assetStatus ? this.props.assetStatus.Name : "" }}
             />
           }
