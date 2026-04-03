@@ -12,7 +12,7 @@ on:
   
 jobs:
   replace-localization:
-    name: Replace localization
+    name: Check for depricated assets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo codebase
@@ -30,15 +30,4 @@ jobs:
         run: npm ci
       - name: Run deprication report script
         run: node .github/workflows/scripts/depricationReport.js
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v8
-        with:
-          commit-message: "Update languages assets based on a change to the English Version"
-          title: "[Automated PR] Update languages assets"
-          body: |
-            This PR was automatically generated to update the localized asset titles based on changes made to the English version of the assets.
     

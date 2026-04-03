@@ -2,16 +2,10 @@
 const axios = require('axios');
 const fs = require('fs');
 const cheerio = require('cheerio');
-const LOG_SOURCE = "translateAssets.js";
+const LOG_SOURCE = "depricationReport.js";
 
 // Define the paths for source and output files
-const manifestPath = 'docs/learningpathways/v4/manifest.json';
 const sourcePath = 'docs/learningpathways/v4/en-us/assets.json'; 
-const outputPath = 'docs/learningpathways/v4/xx-xx/assets.json';
-
-let assetLangs = [];
-//let depricatedAssets = [];
-//let sourceData = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
 
 /**
  * Main function to make API calls
